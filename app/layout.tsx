@@ -54,7 +54,7 @@ export default function RootLayout({
                 href="https://www.linkedin.com/in/mohammad-hojjat-mahdizada-3769b02a8/"
                 title="Portfolio homepage"
               >
-                <span className="text-default-600">Powered by</span>
+                <span className="text-default-600">Made by</span>
                 <p className="text-primary">MHM</p>
               </Link>
             </footer>
