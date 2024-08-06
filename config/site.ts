@@ -1,51 +1,35 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Next.js + NextUI",
-  description: "Make beautiful websites regardless of your design experience.",
+  name: "QuizWiz",
+  description: "website to test your knowledge.",
   navItems: [
     {
-      label: "Home",
+      label: "Start quiz",
       href: "/",
     },
 
     {
-      label: "About",
+      label: "About project",
       href: "/about",
     },
   ],
   navMenuItems: [
     {
-      label: "Profile",
-      href: "/profile",
+      label: "Start Quiz",
+      href: "/",
     },
     {
-      label: "Dashboard",
-      href: "/dashboard",
+      label: "About Project",
+      href: "/about",
     },
     {
-      label: "Projects",
-      href: "/projects",
+      label: "Follow me on X",
+      href: "https://x.com/MHM___2024",
     },
     {
-      label: "Team",
-      href: "/team",
-    },
-    {
-      label: "Calendar",
-      href: "/calendar",
-    },
-    {
-      label: "Settings",
-      href: "/settings",
-    },
-    {
-      label: "Help & Feedback",
-      href: "/help-feedback",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
+      label: "Follow me on Instagram",
+      href: "https://www.instagram.com/mhm___2024/",
     },
   ],
   links: {

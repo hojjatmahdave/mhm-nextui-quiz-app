@@ -1,1 +1,1 @@
-export { default as SiteLogo } from "@/public/MHM_Logo.png";
+export { default as SiteLogo } from "@/public/svg/logo-no-background.svg";
