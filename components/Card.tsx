@@ -1,40 +1,60 @@
 "use client";
 
 import { Button, Select, SelectItem, Slider } from "@nextui-org/react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-export const animals = [
-  { key: "cat", label: "Cat" },
-  { key: "dog", label: "Dog" },
-  { key: "elephant", label: "Elephant" },
-  { key: "lion", label: "Lion" },
-  { key: "tiger", label: "Tiger" },
-  { key: "giraffe", label: "Giraffe" },
-  { key: "dolphin", label: "Dolphin" },
-  { key: "penguin", label: "Penguin" },
-  { key: "zebra", label: "Zebra" },
-  { key: "shark", label: "Shark" },
-  { key: "whale", label: "Whale" },
-  { key: "otter", label: "Otter" },
-  { key: "crocodile", label: "Crocodile" },
-];
+import { categoryOptions, difficultyOptions } from "@/constants";
+
 const Card = () => {
+  const router = useRouter();
+  const [category, setCategory] = useState<string>("");
+  const [difficulty, setDifficulty] = useState<string>("");
+  const [limit, setLimit] = useState<number | number[]>(5);
+
+  const handleQuizStart = () => {
+    router.push(
+      `/questions?category=${category}&difficulty=${difficulty}&limit=${limit}`,
+    );
+  };
+
   return (
     <div className="flex flex-col items-center justify-center gap-10 w-full h-full my-10">
-      <div className=" flex flex-row items-center justify-between w-full h-full">
-        <Select className="max-w-xs" label="Category" size={"sm"}>
-          {animals.map((animal) => (
-            <SelectItem key={animal.key}>{animal.label}</SelectItem>
+      <div className=" flex flex-col lg:flex-row items-center justify-between w-full h-full">
+        <Select
+          className="max-w-xs "
+          label="Category"
+          size={"sm"}
+          variant="bordered"
+          value={category}
+          onChange={(e) => {
+            setCategory(e.target.value);
+          }}
+        >
+          {categoryOptions.map((category) => (
+            <SelectItem key={category.value} className="p-2">
+              {category.option}
+            </SelectItem>
           ))}
         </Select>
-        <Select className="max-w-xs" label="Difficulty" size={"sm"}>
-          {animals.map((animal) => (
-            <SelectItem key={animal.key}>{animal.label}</SelectItem>
+        <Select
+          className="max-w-xs"
+          label="Difficulty"
+          size={"sm"}
+          variant="bordered"
+          value={difficulty}
+          onChange={(e) => setDifficulty(e.target.value)}
+        >
+          {difficultyOptions.map((difficulty) => (
+            <SelectItem key={difficulty.value} className="p-2">
+              {difficulty.option}
+            </SelectItem>
           ))}
         </Select>
       </div>
       <Slider
-        className="max-w-xl my-10 "
-        defaultValue={10}
+        className="max-w-xl"
+        defaultValue={5}
         formatOptions={{ style: "decimal" }}
         label="Number of Questions"
         marks={[
@@ -63,8 +83,16 @@ const Card = () => {
         minValue={5}
         showTooltip={true}
         step={5}
+        value={limit}
+        onChange={(e) => setLimit(e)}
       />
-      <Button color="primary" size="lg" className="p-4 ">
+      <Button
+        isDisabled={!category || !difficulty}
+        className="p-4 rounded-md "
+        color="primary"
+        size="lg"
+        onClick={handleQuizStart}
+      >
         Start Quiz
       </Button>
     </div>

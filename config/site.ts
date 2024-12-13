@@ -5,11 +5,6 @@ export const siteConfig = {
   description: "website to test your knowledge.",
   navItems: [
     {
-      label: "Start quiz",
-      href: "/",
-    },
-
-    {
       label: "About project",
       href: "/about",
     },
